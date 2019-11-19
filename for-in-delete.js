@@ -11,26 +11,25 @@
   In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// var values = {
-//   one: 'These',
-//   two: ' are',
-//   three: ' the',
-//   four: ' property',
-//   five: ' values.'
-// } 
+var values = {
+  one: 'These',
+  two: ' are',
+  three: ' the',
+  four: ' property',
+  five: ' values.'
+} 
 
-// for(var key in values) {
-//   console.log(values[key])
-// }
+for(var key in values) {
+  console.log(values[key])
+}
 
 /*
   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
 */
 
-// for(var key in values) {
-//   console.log(key)
-// }
-
+for(var key in values) {
+  console.log(key)
+}
 
 
 ////////// PROBLEM 1 //////////
@@ -39,10 +38,13 @@
   Inside the function showValues, write a for in loop that concatenates each of the property values and returns the concatenated string.
 */
 
-function showValues( obj ) {
-  //Code Here
+function showValues(obj) {
+  var arr = []; 
+  for(var prop in obj) {
+    arr.push(obj[prop])
+  }
+    return arr.join("");
 }
-
 
 
 ////////// PROBLEM 2 //////////
@@ -53,8 +55,14 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
-
+function greaterThan10(obj) {
+  for(var prop in obj) {
+    if(obj[prop]>10) {
+      obj[prop]=0;
+    }
+  }
+  return obj;
+} 
 
 
 ////////// PROBLEM 3 //////////
@@ -65,8 +73,12 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
-
+function double(obj) {
+  for(var prop in obj) {
+    obj[prop] = obj[prop] * 2;
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -79,9 +91,15 @@ function showValues( obj ) {
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
 
-//Code Here
-
-
+function secrets(obj){
+  var str = "";
+  for(var prop in obj){
+    if(prop.startsWith("sh")){
+      str += obj[prop];
+    }
+  }
+  return str;
+}
 
 /* 
   Sometimes it's needed to delete object properties. 
@@ -89,18 +107,17 @@ function showValues( obj ) {
   Uncomment the example below to see a for in loop deleting all the properties inside an object.
 */
 
-// var deleteAllThethings = {
-//   one: 1,
-//   two: 2,
-//   three: 3
-// }
+var deleteAllThethings = {
+  one: 1,
+  two: 2,
+  three: 3
+}
 
-// for(var key in deleteAllThethings) {
-//   delete deleteAllThethings[key]
-// }
+for(var key in deleteAllThethings) {
+  delete deleteAllThethings[key]
+}
 
-// console.log(deleteAllThethings)
-
+console.log(deleteAllThethings)
 
 
 ////////// PROBLEM 5 //////////
@@ -110,8 +127,14 @@ function showValues( obj ) {
   Delete the property password and return the object.
 */
 
-//Code Here
-
+function removePassword(obj) {
+  for(var prop in obj) {
+    if (prop === "password") {
+      delete obj[prop];
+    }
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 6 //////////
@@ -129,8 +152,11 @@ var deleteTheBigNumbers = {
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
-
+for(var prop in deleteTheBigNumbers) {
+  if(deleteTheBigNumbers[prop]>100) {
+    delete deleteTheBigNumbers[prop];
+  }
+}
 
 
 ////////// PROBLEM 7 //////////
@@ -142,8 +168,14 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
-
+function startsWithK(obj) {
+  for(var prop in obj) {
+    if(prop.startsWith("k")) {
+      delete obj[prop];
+    }
+  }
+  return obj;
+}
 
 
 ////////// PROBLEM 8 //////////
@@ -157,6 +189,13 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
+function hiddenTreasure(obj) {
+  for(var prop in obj) {
+    if(obj[prop].includes("treasure") === false) {
+      delete obj[prop];
+    }
+  }
+  return obj;
+}
 
 
